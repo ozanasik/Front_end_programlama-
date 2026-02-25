@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        textBox1.Text = "Birinci Katsayı";
+        textBox2.Text = "İkinci Katsayı";
+        textBox3.Text = "Üçüncü Katsayı";
+        textBox4.Text = "Birinci Kök";
+        textBox5.Text = "İkinci Kök";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                double a, b, c, delta, x1, x2, z;
+                a = Convert.ToDouble(textBox1.Text);
+                b = Convert.ToDouble(textBox2.Text);
+                c = Convert.ToDouble(textBox3.Text);
+                delta = b * b - 4 * a * c;
+                if (delta < 0)
+                {
+                    delta = Math.Abs(delta);
+                    z = Math.Sqrt(delta) / (2 * a);
+                }
+                else
+                {
+                    x1 = (-b + Math.Sqrt(delta)) / (2 * a);
+                    x2 = (-b - Math.Sqrt(delta)) / (2 * a);
+                    textBox4.Text = x1.ToString();
+                    textBox5.Text = x2.ToString();
+                }
+            }
+            catch 
+            {
+                MessageBox.Show("Hata Oluştu");
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form2 f = new Form2();
+            f.Show();
+        }
+    }
+}
