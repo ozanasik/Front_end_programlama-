@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class Form2 : Form
+    {
+        double[] sayi = new double[1000]; //1000 adet dizi için
+        int k = 0; // global (genel) değişken
+        public Form2() 
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "" ) // Eğer textbox boşsa
+            {
+                MessageBox.Show("Bir sayı girmelisiniz!");
+                return; // button_click olayından çık.
+            }
+            sayi[k]= Convert.ToDouble(textBox1.Text);
+            listBox1.Items.Add((k+1).ToString()+ ". sayı = " + sayi[k].ToString());
+            k += 1; // k yı 1 arttır
+            textBox1.Text = ""; // textbox içini boşalt.
+            textBox1.Focus(); // imleci textbox1 in içine getir.
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            double toplam = 0, ort = 0; // local (yerel) değişkenler
+            for (int i = 0; i < k; i++)
+            {
+                toplam += sayi[i]; //dizideki değerleri toplar
+            }
+            ort = toplam / Convert.ToDouble(k);
+            this.Text = toplam.ToString();
+            this.Text = string.Format("toplam ={0} ve ortalama = {1}", toplam, ort);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
